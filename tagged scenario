@@ -1,0 +1,35 @@
+@smoke
+Feature: Login Functionality
+
+  Scenario: Valid User Login
+    Given the user is on the login page
+    When the user enters valid credentials
+    Then the user should be logged in successfully
+
+  @regression
+  Scenario: Invalid User Login
+    Given the user is on the login page
+    When the user enters invalid credentials
+    Then the user should see an error message
+
+  @smoke @regression
+  Scenario: Forgot Password
+    Given the user is on the login page
+    When the user clicks on "Forgot Password"
+    Then the user should receive a password reset link
+===========================================================================
+package runners;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        features = "src/test/resources/features",
+        glue = "stepDefinitions",
+        tags = "@smoke" // Execute scenarios tagged as @smoke
+)
+public class TestRunner {
+    // This class acts as a placeholder for running the scenarios
+}
