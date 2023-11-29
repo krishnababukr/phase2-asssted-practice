@@ -1,0 +1,8 @@
+Scenario: Add Item to Cart and Checkout
+  Given the user is on the home page
+  When the user searches for "Product X"
+  And the user selects "Product X"
+  And the user adds "Product X" to the cart
+  Then the cart should contain "Product X"
+  And the user proceeds to checkout
+  Then the user should see the checkout page
