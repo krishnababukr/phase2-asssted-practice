@@ -1,0 +1,33 @@
+Feature: Shopping Cart Functionality
+
+  Scenario: Add Item to Cart
+    Given the user is on the shopping site
+    When the user adds an item to the cart
+    Then the item should be in the cart
+
+  Scenario: Remove Item from Cart
+    Given the user has items in the cart
+    When the user removes an item from the cart
+    Then the item should be removed from the cart
+
+  Scenario: Update Quantity in Cart
+    Given the user has items in the cart
+    When the user updates the quantity of an item in the cart
+    Then the quantity should be updated in the cart
+==========================================================================
+package runners;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        features = "src/test/resources/features/ShoppingCart.feature", // Path to your feature file
+        glue = "stepDefinitions",
+        tags = "@AddToCart or @UpdateQuantity" // Execute scenarios tagged with either @AddToCart or @UpdateQuantity
+)
+public class TestRunner {
+    // This class acts as a placeholder for running the scenarios
+}
+
