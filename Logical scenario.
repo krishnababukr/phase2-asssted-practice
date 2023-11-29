@@ -1,0 +1,30 @@
+Scenario: Purchase with Discount
+  Given the user is on the checkout page
+  When the user applies a discount code "DISCOUNT10" and total amount is greater than $50
+  Then the user should see the discounted price
+Scenario: Premium or Gold Membership
+  Given the user is logged in
+  When the user has a premium membership or a gold membership
+  Then the user should have access to exclusive content
+============================================
+// Example Java step definitions
+@When("the user applies a discount code {string} and total amount is greater than ${int}")
+public void applyDiscountCodeAndCheckTotal(String discountCode, int amount) {
+    // Apply discount code logic
+    // Check if the total amount is greater than $50
+    if (discountCode.equals("DISCOUNT10") && amount > 50) {
+        // Logic for applying discount and checking total amount
+    } else {
+        // Handle the scenario where the conditions are not met
+    }
+}
+
+@When("the user has a premium membership or a gold membership")
+public void checkMembership() {
+    // Check if the user has a premium or gold membership
+    if (userHasPremiumMembership() || userHasGoldMembership()) {
+        // Logic for handling access to exclusive content
+    } else {
+        // Handle the scenario where the conditions are not met
+    }
+}
