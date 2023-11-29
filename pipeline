@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your project from version control
+                // For example, git checkout or svn checkout
+            }
+        }
+
+        stage('Build and Test') {
+            steps {
+                // Build steps: set up environment, install dependencies, execute tests
+                sh 'mvn clean test' // Example Maven command to run tests
+            }
+        }
+
+        stage('Publish Extent Reports') {
+            steps {
+                // Publish Extent Reports using HTML Publisher Plugin
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'target/reports',
+                    reportFiles: 'index.html',
+                    reportName: 'Extent Report'
+                ])
+            }
+        }
+    }
+}
