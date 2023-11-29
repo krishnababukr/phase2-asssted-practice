@@ -1,0 +1,49 @@
+Feature: Login Functionality
+
+  Scenario: Valid User Login
+    Given the user is on the login page
+    When the user enters valid credentials
+    Then the user should be logged in successfully
+=============================================================================================
+package steps;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class LoginStepDefinitions {
+
+    @Given("the user is on the login page")
+    public void the_user_is_on_the_login_page() {
+        // Implement code to navigate to the login page
+        System.out.println("Navigating to the login page...");
+    }
+
+    @When("the user enters valid credentials")
+    public void the_user_enters_valid_credentials() {
+        // Implement code to enter valid credentials
+        System.out.println("Entering valid credentials...");
+    }
+
+    @Then("the user should be logged in successfully")
+    public void the_user_should_be_logged_in_successfully() {
+        // Implement code to verify successful login
+        System.out.println("Verifying successful login...");
+    }
+}
+======================================================================
+package runners;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        features = "src/test/resources/features",
+        glue = "stepDefinitions"
+)
+public class TestRunner {
+    // This class acts as a placeholder for running the scenarios
+}
+
